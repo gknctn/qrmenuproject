@@ -1,0 +1,49 @@
+﻿@model Contact
+@{
+    ViewData["Title"] = "İletişim Sil";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="post" asp-action="ContactDelete">
+                <div class="alert alert-danger text-center m-auto">
+                    <p>Silmek istediğinize emin misiniz?</p>
+                </div>
+                <input type="hidden" name="ProductId" value="@Model.ContactId" />
+                <div class="mb-3">
+                    <label for="ContactName" class="form-label">Ad</label>
+                    <input type="text" class="form-control" asp-for="@Model.ContactName" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="ContactSurname" class="form-label">Soyad</label>
+                    <input type="text" class="form-control" asp-for="@Model.ContactSurname" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="ContactMail" class="form-label">Mail</label>
+                    <input type="text" class="form-control" asp-for="@Model.ContactMail" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="ContactPhoneNumber" class="form-label">Numara</label>
+                    <input type="text" class="form-control" asp-for="@Model.ContactPhoneNumber" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="ContactMessage" class="form-label">Mesaj</label>
+                    <textarea type="text" rows="6" class="form-control" asp-for="@Model.ContactMessage" disabled></textarea>
+                </div>
+                <div class="btn-group" role="group" aria-label="İşlem Butonları">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash"></i>
+                        Sil
+                    </button>
+                    <a type="button" asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left"></i>
+                        Geri
+                    </a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

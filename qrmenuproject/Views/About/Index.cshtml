@@ -1,0 +1,24 @@
+﻿@model About
+@{
+    ViewData["Title"] = "Hakkımızda";
+}
+
+<section class="container mt-5">
+    <p>
+        @Model.AboutDescription
+    </p>
+    <div class="row mt-5">
+        <div class="col-md-6 p-5">
+            <h3 class="text-center mb-4">Vizyonumuz</h3>
+            <p>
+                @Model.AboutVision
+            </p>
+        </div>
+        <div class="col-md-6 p-5">
+            <h3 class="text-center mb-4">Misyonumuz</h3>
+            <p>
+                @Model.AboutMission
+            </p>
+        </div>
+    </div>
+</section>

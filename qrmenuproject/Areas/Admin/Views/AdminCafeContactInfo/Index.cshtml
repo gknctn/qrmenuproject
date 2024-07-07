@@ -1,0 +1,13 @@
+﻿@model CafeContactInfo
+@{
+    ViewData["Title"] = "Kafe İletişim Detay";
+}
+<div class="container text-center">
+    <div>
+        <p>@Model.CafeContactInfoAddress </p>
+        <p>@Model.CafeContactInfoMail</p>
+    </div>
+    <div class="btn-group">
+        <a class="btn btn-warning" asp-action="CafeContactInfoEdit">Düzenle</a>
+    </div>
+</div>

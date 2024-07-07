@@ -1,0 +1,28 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Ürün Detay";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <img src="https://i.nefisyemektarifleri.com/2020/05/27/latte-yapimi-ev-yapimi-bol-kopuklu-latte.jpg" class="card-img-top" alt="Ürün Resmi">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <h5 class="card-title text-center">@Model.ProductName</h5>
+                            <p class="card-text">Fiyat: @Model.ProductPrice</p>
+                            <p class="card-text">Açıklama: @Model.ProductDescription</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <a asp-area="Admin" asp-controller="AdminProduct" asp-action="Index" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Geri Dön</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

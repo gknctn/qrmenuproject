@@ -1,0 +1,55 @@
+﻿@model IQueryable<Product>
+@{
+    ViewData["Title"] = "Ürün Listeleme";
+}
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-md-2 text-center">
+            <a class="btn btn-success" asp-area="Admin" asp-controller="AdminProduct" asp-action="ProductCreate">
+                Ürün Ekle
+            </a>
+        </div>
+    </div>
+</div>
+<div class="row justify-content-center mb-5">
+    <div class="col-md-12">
+        <table class="table table-striped text-center mb-5">
+            <thead>
+                <tr>
+                    <th>Detay</th>
+                    <th>#</th>
+                    <th>Ürün Adı</th>
+                    <th>Fiyat</th>
+                    <th>Kategori</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a class="btn btn-primary" href="/Admin/Adminproduct/Productdetail/@item.ProductId">
+                                <i class="fas fa-search"></i>
+                            </a>
+                        </td>
+                        <td>@item.ProductId</td>
+                        <td>@item.ProductName</td>
+                        <td>@item.ProductPrice</td>
+                        <td>@item.Category.CategoryName</td>
+                        <td>
+                            <div class="btn-group">
+                                <a class="btn btn-warning" asp-area="Admin" asp-controller="Adminproduct" asp-action="Productedit" asp-route-id="@item.ProductId">
+                                    <i class="fa-solid fa-pen"></i>
+                                </a>
+                                <a class="btn btn-danger" asp-area="Admin" asp-controller="Adminproduct" asp-action="ProductDelete" asp-route-id="@item.ProductId">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

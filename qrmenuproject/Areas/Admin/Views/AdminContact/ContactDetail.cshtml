@@ -1,0 +1,16 @@
+﻿@model Contact
+@{
+    ViewData["Title"] = "İletişim Detay";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div>
+    <p>@Model.ContactName </p>
+    <p>@Model.ContactSurname</p>
+    <p>@Model.ContactMessage</p>
+</div>
+<div class="btn-group">
+    <a class="btn btn-outline-primary" asp-action="Index">Back to List</a>
+</div>
+
+

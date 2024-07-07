@@ -1,0 +1,45 @@
+﻿@model IQueryable<Category>
+@{
+    ViewData["Title"] = "Kategori Listeleme";
+}
+
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-md-2 text-center">
+            <a class="btn btn-success" asp-area="Admin" asp-controller="AdminCategory" asp-action="CategoryCreate">
+                Kategori Ekle
+            </a>
+        </div>
+    </div>
+</div>
+<div class="row justify-content-center mb-5">
+    <div class="col-md-12">
+        <table class="table table-striped text-center mb-5">
+            <thead>
+                <tr>
+                    <th>Ürün Adı</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CategoryName</td>
+                        <td>
+                            <div class="btn-group">
+                                <a class="btn btn-warning" asp-area="Admin" asp-controller="AdminCategory" asp-action="CategoryEdit" asp-route-id="@item.CategoryId">
+                                    <i class="fa-solid fa-pen"></i>
+                                </a>
+                                <a class="btn btn-danger" asp-area="Admin" asp-controller="AdminCategory" asp-action="CategoryDelete" asp-route-id="@item.CategoryId">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

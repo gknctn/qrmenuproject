@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.css">
+    <title>Qr Menu - @ViewData["Title"] </title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/qrmenuproject.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/font-awesome/all.min.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <partial name="_Navbar"></partial>
+        @RenderSection("Header", required: false)
+    </header>
+    <section>
+        <div class="container">
+                @RenderSection("Body", required: false)
+                @RenderBody()
+        </div>
+    </section>
+
+
+    <footer>
+        <partial name="_Footer"></partial>
+        @RenderSection("Footer", required: false)
+
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/font-awesome/js/all.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/script.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

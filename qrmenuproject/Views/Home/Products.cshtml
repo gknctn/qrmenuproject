@@ -1,0 +1,35 @@
+﻿@model CategoryWithProducts
+@{
+    ViewData["Title"] = "Ürünler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center mt-3 mb-3">MENÜ</h1>
+
+
+@section Body {
+    <div class="menu">
+        <ul>
+            <li>
+                <a class="btn-menu">Tümü</a>
+            </li>
+            @foreach (Category category in Model.Categories)
+            {
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Categorywithproducts" asp-route-id="@category.CategoryId" class="btn-menu">@category.CategoryName</a>
+                </li>
+            }
+        </ul>
+    </div>
+}
+<div id="div1" class="my-div">
+    <div class="container">
+        <div class="menu-grid">
+            @foreach (Product prd in Model.Products)
+            {
+                <partial name="_ProductCard" model="@prd" />
+            }
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,32 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Kategori Sil";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="post" asp-action="CategoryDelete">
+                <div class="alert alert-danger text-center m-auto">
+                    <p>Silmek istediğinize emin misiniz?</p>
+                </div>
+                <input type="hidden" name="ProductId" value="@Model.CategoryId" />
+                <div class="mb-3">
+                    <label for="productName" class="form-label">Categori Adı</label>
+                    <input type="text" class="form-control" asp-for="@Model.CategoryName" disabled>
+                </div>
+                <div class="btn-group" role="group" aria-label="İşlem Butonları">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash"></i>
+                        Sil
+                    </button>
+                    <a type="button" asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left"></i>
+                        Geri
+                    </a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

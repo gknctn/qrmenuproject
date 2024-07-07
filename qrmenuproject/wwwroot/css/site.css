@@ -1,0 +1,500 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header h1 {
+    color: #ffff;
+    position: absolute;
+    font-size: 4rem;
+    font-family: 'Nunito Sans', sans-serif;
+    text-align: center;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+}
+
+header span {
+    opacity: 0;
+    transition: all 1s ease;
+    transform: translateY(50px);
+    display: inline-block;
+    z-index: 1000;
+}
+
+    header span.fade {
+        opacity: 1 !important;
+        transform: translateY(0px);
+        z-index: 1000;
+    }
+
+header img {
+    width: 100%;
+    max-width: 100%;
+    height: 550px;
+    filter: brightness(30%);
+}
+
+header {
+    position: relative;
+}
+
+    header nav {
+        position: absolute;
+        top: 0;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+        header nav ul {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-left: 0;
+        }
+
+            header nav ul li {
+                list-style: none;
+                padding: 20px;
+                color: white;
+            }
+
+                header nav ul li a {
+                    text-decoration: none;
+                    color: white;
+                    font-size: 18px;
+                    font-weight: 600;
+                    letter-spacing: 1px;
+                }
+
+
+.menu-toggle {
+    cursor: pointer;
+    display: none;
+}
+
+#menuToggleClose {
+    display: none;
+}
+
+ul.menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+    ul.menu li {
+        margin-right: 20px;
+    }
+
+        ul.menu li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        color: white;
+    }
+
+    header nav {
+        background-color: #333;
+    }
+
+    ul.menu {
+        display: none;
+        flex-direction: column;
+    }
+
+        ul.menu li {
+            margin: 10px 0;
+        }
+
+    #menuToggleClose.show {
+        display: block;
+    }
+
+    #menuToggleOpen.hide {
+        display: none;
+    }
+}
+
+.btn-menu {
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    background-color: transparent;
+}
+
+.card-menu {
+    position: relative;
+    padding: 10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    margin: 10px;
+    display: flex;
+    width: 49%;
+    flex: 1 1 45%; /* Yarý geniþlik */
+    margin: 10px;
+    text-align: center;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+    .card-menu img {
+        width: 30%;
+        height: 150px;
+        border-radius: 50%;
+    }
+
+    .card-menu h4 {
+        position: absolute;
+        right: 5%;
+    }
+
+.menu ul {
+    display: flex;
+}
+
+    .menu ul li {
+        list-style: none;
+    }
+
+.menu-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+@media (max-width: 768px) {
+    .card-menu {
+        flex: 1 1 100%; /* Tam geniþlik */
+    }
+
+        .card-menu img {
+            width: 30%;
+            height: 100px;
+            border-radius: 50%;
+        }
+}
+
+#map {
+    width: 100%;
+    height: 350px;
+}
+
+.image-container {
+    position: absolute;
+    z-index: 1;
+}
+
+#leftImageContainer {
+    top: 0;
+    left: 0;
+    animation: rotateIn 1s ease-out;
+}
+
+#rightImageContainer {
+    top: 0;
+    right: 0;
+    animation: rotateIn 1s ease-out;
+}
+
+
+
+/* Dönen animasyon */
+@keyframes rotateIn {
+    from {
+        transform: rotate(-360deg);
+        opacity: 0;
+    }
+
+    to {
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+}
+
+#leftImage,
+#rightImage {
+    height: 250px;
+}
+
+.contact-icon {
+    position: relative;
+    top: -20px;
+}
+
+.contact-mail {
+    text-decoration: none !important;
+    color: black !important;
+}
+
+@media (max-width:768px) {
+    header .mobile-menu {
+        display: block;
+        position: absolute;
+        top: 0;
+        z-index: 5;
+        background: rgba(0, 0, 0, 0.8); /* Saydamlýk deðeri 0.8 */
+        width: 100%;
+        height: 50px;
+    }
+
+    header .menu {
+        display: none;
+    }
+
+    .header-logo {
+        font-size: 40px;
+        text-decoration: none;
+        color: white;
+        position: absolute;
+        top: 0;
+        display: block;
+    }
+
+    header nav ul {
+        align-items: flex-start;
+    }
+
+        header nav ul li {
+            list-style: none;
+            padding: 5px 30px;
+            color: white;
+        }
+
+    ul.menu {
+        background: rgba(0, 0, 0, 0.8); /* Saydamlýk deðeri 0.8 */
+        width: 100%;
+    }
+
+    header img {
+        height: 350px;
+    }
+}
+
+@media (min-width:768px) {
+    header .mobile-menu {
+        display: none;
+    }
+
+    nav.menu {
+        display: block;
+    }
+
+    .header-logo {
+        display: none;
+    }
+}
+
+.footer-bottom {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+}
+
+    .footer-bottom p {
+        margin: 0;
+    }
+
+.swiper-pop .slide-container {
+    max-width: 1440px;
+    width: 100%;
+    padding: 40px 40px;
+}
+
+.swiper-pop .slide-content {
+    margin: 0 40px;
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+.swiper-pop .card {
+    border-radius: 25px;
+    background-color: #FFF;
+}
+
+.swiper-pop .image-content,
+.swiper-pop .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 14px;
+}
+
+.swiper-pop .image-content {
+    position: relative;
+    row-gap: 5px;
+    padding: 25px 0;
+}
+
+.swiper-pop .overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #4070F4;
+    border-radius: 25px 25px 0 25px;
+}
+
+    .swiper-pop .overlay::after {
+        border-radius: 0 25px 0 0;
+        background-color: #FFF;
+    }
+
+.swiper-pop .card-image {
+    position: relative;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background: #FFF;
+    padding: 3px;
+}
+
+    .swiper-pop .card-image .card-img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid #4070F4;
+    }
+
+.swiper-pop .name {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}
+
+.swiper-pop .description {
+    font-size: 14px;
+    color: #707070;
+    text-align: center;
+}
+
+
+.swiper-pop .swiper-navBtn {
+    color: #6E93f7;
+    transition: color 0.3s ease;
+}
+
+    .swiper-pop .swiper-navBtn:hover {
+        color: #4070F4;
+    }
+
+    .swiper-pop .swiper-navBtn::before,
+    .swiper-pop .swiper-navBtn::after {
+        font-size: 35px;
+    }
+
+.swiper-pop .swiper-button-next {
+    right: 0;
+}
+
+.swiper-pop .swiper-button-prev {
+    left: 0;
+}
+
+.swiper-pop .swiper-pagination-bullet {
+    background-color: #6E93f7;
+    opacity: 1;
+}
+
+.swiper-pop .swiper-pagination-bullet-active {
+    background-color: #4070F4;
+}
+
+@media screen and (max-width: 768px) {
+    .swiper-pop .slide-content {
+        margin: 0 10px;
+    }
+
+    .swiper-pop .swiper-navBtn {
+        display: block;
+    }
+
+    .swiper-pop .swiper-button-prev {
+        left: 10px;
+    }
+}
+
+.menu-exp {
+    position: absolute;
+    right: 5%;
+    top: 60%;
+    font-size: 14px;
+    color: gray;
+}
+
+footer {
+    background-color: #fbfbfb;
+    padding: 30px 0px 30px 0px;
+}
+
+    footer a {
+        font-size: 20px;
+        text-decoration: none;
+    }
+
+    footer .insta {
+        width: 50%;
+        background-color: #f8444d;
+        padding: 17px 0px 20px 0px;
+        border-radius: 10px;
+        margin-left: 25%;
+        text-align: center;
+    }
+
+    footer .face {
+        width: 50%;
+        background-color: #3b5998;
+        padding: 17px 0px 20px 0px;
+        border-radius: 10px;
+        margin-left: 25%;
+        text-align: center;
+    }
+
+    footer .wp {
+        width: 50%;
+        background-color: #25D366;
+        padding: 17px 0px 20px 0px;
+        border-radius: 10px;
+        margin-left: 25%;
+        text-align: center;
+    }
+
+        footer .insta a,
+        footer .face a,
+        footer .wp a {
+            color: white;
+        }
+
+    footer span {
+        position: relative;
+        top: 2px;
+    }
+
+.insta-icon,
+.face-icon,
+.wp-icon {
+    color: white;
+}
+
+#div1,
+#div2,
+#div3 {
+    margin-bottom: 30px;
+}

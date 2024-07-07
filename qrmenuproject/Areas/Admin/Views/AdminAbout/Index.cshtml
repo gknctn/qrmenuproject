@@ -1,0 +1,50 @@
+﻿@model About
+@{
+    ViewData["Title"] = "Hakkımızda";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="post" asp-action="AboutEdit">
+                <div asp-validation-summary="All" class="alert alert-danger"></div>
+                <input type="hidden" name="AboutId" value="@Model.AboutId" />
+                <div class="mb-3">
+                    <label for="AboutVision" class="form-label">Vizyon</label>
+                    <textarea type="text" rows="6" class="form-control" asp-for="@Model.AboutVision"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="AboutMission" class="form-label">Misyon</label>
+                    <textarea type="text" rows="6" class="form-control" asp-for="@Model.AboutMission"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="AboutDescription" class="form-label">Açıklama</label>
+                    <textarea type="text" rows="6" class="form-control" asp-for="@Model.AboutDescription"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="AboutFacebookAddress" class="form-label">Facebook profil link</label>
+                    <input type="text" class="form-control" asp-for="@Model.AboutFacebookAddress">
+                </div>
+                <div class="mb-3">
+                    <label for="AboutWpAddress" class="form-label">Whatsapp numara</label>
+                    <input type="text" class="form-control" asp-for="@Model.AboutWpAddress">
+                </div>
+                <div class="mb-3">
+                    <label for="AboutInstagramAddress" class="form-label">Instagram profil link</label>
+                    <input type="text" class="form-control" asp-for="@Model.AboutInstagramAddress">
+                </div>
+                <div class="btn-group mb-5" role="group" aria-label="İşlem Butonları">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i>
+                        Güncelle
+                    </button>
+                    <a type="button" asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left"></i>
+                        Geri
+                    </a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

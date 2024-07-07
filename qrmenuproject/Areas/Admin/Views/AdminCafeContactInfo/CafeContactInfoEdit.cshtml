@@ -1,0 +1,35 @@
+﻿@model CafeContactInfo
+@{
+    ViewData["Title"] = "Kafe İletişim Düzenle";
+}
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="post" asp-action="CafeContactInfoEdit">
+                <div asp-validation-summary="All" class="alert alert-danger"></div>
+                <input type="hidden" name="CafeContactInfoId" value="@Model.CafeContactInfoId " />
+                <div class="mb-3">
+                    <label for="CafeContactInfoMail" class="form-label">Mail</label>
+                    <input type="email" class="form-control" asp-for="@Model.CafeContactInfoMail">
+                </div>
+                <div class="mb-3">
+                    <label for="CafeContactInfoAddress" class="form-label">Kafenin adresi</label>
+                    <input type="text" class="form-control" asp-for="@Model.CafeContactInfoAddress">
+                </div>
+                <div class="btn-group mb-5" role="group" aria-label="İşlem Butonları">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i>
+                        Güncelle
+                    </button>
+                    <a type="button" asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left"></i>
+                        Geri
+                    </a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,41 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Ürün Silme";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="post" asp-action="ProductDelete">
+                <div class="alert alert-danger text-center m-auto">
+                    <p>Silmek istediğinize emin misiniz?</p>
+                </div>
+                <input type="hidden" name="ProductId" value="@Model.ProductId" />
+                <div class="mb-3">
+                    <label for="productName" class="form-label">Ürün Adı</label>
+                    <input type="text" class="form-control" asp-for="@Model.ProductName" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="productPrice" class="form-label">Fiyat</label>
+                    <input type="text" class="form-control" asp-for="@Model.ProductPrice" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="stockStatus" class="form-label">Ürün Açıklama</label>
+                    <textarea type="text" rows="6" class="form-control" asp-for="@Model.ProductDescription" disabled></textarea>
+                </div>
+                <div class="btn-group" role="group" aria-label="İşlem Butonları">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash"></i>
+                        Sil
+                    </button>
+                    <a type="button" asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left"></i>
+                        Geri
+                    </a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+

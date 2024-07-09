@@ -27,6 +27,7 @@ builder.Services.AddScoped<ICategoryService, CategoryManager>();
 builder.Services.AddScoped<IContactService, ContactManager>();
 builder.Services.AddScoped<IAboutService, AboutManager>();
 builder.Services.AddScoped<ICafeContactInfoService, CafeContactInfoManager>();
+builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 

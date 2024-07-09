@@ -1,4 +1,6 @@
-﻿using Entities.Models;
+﻿using AutoMapper;
+using Entities.Dtos;
+using Entities.Models;
 using Repositories.Contracts;
 using Services.Contracts;
 using System;
@@ -12,10 +14,12 @@ namespace Services
     public class ProductManager : IProductService
     {
         private readonly IRepositoryManager _manager;
+        private readonly IMapper _mapper;
 
-        public ProductManager(IRepositoryManager manager)
+        public ProductManager(IRepositoryManager manager, IMapper mapper)
         {
             _manager = manager;
+            _mapper = mapper;
         }
 
         IEnumerable<Product> IProductService.GetAllProducts(bool trackChanges)
@@ -32,14 +36,17 @@ namespace Services
             return value;
         }
 
-        public void AddProduct(Product product, bool trackChanges)
+        public void AddProduct(ProductDtoForInsertion productDto, bool trackChanges)
         {
+            Product product = _mapper.Map<Product>(productDto);
+
             _manager.Product.AddItem(product, trackChanges);
             _manager.save();
         }
 
-        public void EditProduct(Product product, bool trackChanges)
+        public void EditProduct(ProductDtoForUpdate productDtoForUpdate, bool trackChanges)
         {
+            Product product = _mapper.Map<Product>(productDtoForUpdate);
             _manager.Product.EditItem(product, trackChanges);
             _manager.save();
         }
@@ -58,6 +65,16 @@ namespace Services
         public IEnumerable<Product> GetAllProductsWithCategory(bool trackChanges)
         {
             return _manager.Product.GetAllProductsWithCategory(trackChanges);
+        }
+
+        public ProductDtoForUpdate? GetOneProductForUpdate(int id, bool trackChanges)
+        {
+            Product? value = _manager.Product.GetOneProduct(id, trackChanges);
+            if (value is null)
+            {
+                throw new Exception("Product not found");
+            }
+            return _mapper.Map<ProductDtoForUpdate>(value);
         }
     }
 }

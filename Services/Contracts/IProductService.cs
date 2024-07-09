@@ -1,4 +1,5 @@
-﻿using Entities.Models;
+﻿using Entities.Dtos;
+using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,13 @@ namespace Services.Contracts
         IEnumerable<Product> GetAllProductsWithCategory(bool trackChanges);
         IQueryable<Product> GetLastThreeProduct(bool trackChanges);
         Product? GetOneProduct(int id, bool trackChanges);
-        void AddProduct(Product product, bool trackChanges);
-        void EditProduct(Product product, bool trackChanges);
+        void AddProduct(ProductDtoForInsertion productDto, bool trackChanges);
+        void EditProduct(ProductDtoForUpdate productDtoForUpdate, bool trackChanges);
         void DeleteProduct(Product product, bool trackChanges);
+        
+        //for update
+        ProductDtoForUpdate? GetOneProductForUpdate(int id, bool trackChanges);
+
 
     }
 }

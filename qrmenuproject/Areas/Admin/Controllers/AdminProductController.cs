@@ -1,4 +1,5 @@
-﻿using Entities.Models;
+﻿using Entities.Dtos;
+using Entities.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -47,7 +48,7 @@ namespace qrmenuproject.Areas.Admin.Controllers
         // POST: AdminProductController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ProductCreateAsync([FromForm] Product product, IFormFile? file)
+        public async Task<ActionResult> ProductCreateAsync([FromForm] ProductDtoForInsertion productDto, IFormFile? file)
         {
             try
             {
@@ -58,12 +59,12 @@ namespace qrmenuproject.Areas.Admin.Controllers
                     {
                         await file.CopyToAsync(stream);
                     }
-                    product.ProductImage = String.Concat("/MenuProductImageFiles/", file.FileName);
+                    productDto.ProductImage = String.Concat("/MenuProductImageFiles/", file.FileName);
                 }
                 else
                 {
-                    product.ProductImage = "/MenuProductImageFiles/defaultProductPicture.jpg";
-                    
+                    productDto.ProductImage = "/MenuProductImageFiles/defaultProductPicture.jpg";
+
                 }
 
                 List<SelectListItem> categoryValues = (from x in _manager.CategoryService.GetAllCategories(false)
@@ -74,7 +75,7 @@ namespace qrmenuproject.Areas.Admin.Controllers
                                                        }).ToList();
 
                 ViewBag.Categorylist = categoryValues;
-                _manager.ProductService.AddProduct(product, true);
+                _manager.ProductService.AddProduct(productDto, true);
 
                 return RedirectToAction("Index");
             }
@@ -95,14 +96,15 @@ namespace qrmenuproject.Areas.Admin.Controllers
                                                        Value = x.CategoryId.ToString(),
                                                    }).ToList();
             ViewBag.Categorylist = categoryValues;
-            Product value = _manager.ProductService.GetOneProduct(id, false);
+            ProductDtoForUpdate value = _manager.ProductService.GetOneProductForUpdate(id, false);
+
             return View(value);
         }
 
         // POST: AdminProductController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ProductEditAsync([FromForm] Product product,IFormFile? file)
+        public async Task<ActionResult> ProductEditAsync([FromForm] ProductDtoForUpdate productDtoForUpdate, IFormFile? file)
         {
             try
             {
@@ -115,9 +117,9 @@ namespace qrmenuproject.Areas.Admin.Controllers
                         {
                             await file.CopyToAsync(stream);
                         }
-                        product.ProductImage = String.Concat("/MenuProductImageFiles/", file.FileName);
+                        productDtoForUpdate.ProductImage = String.Concat("/MenuProductImageFiles/", file.FileName);
                     }
-                    _manager.ProductService.EditProduct(product, true);
+                    _manager.ProductService.EditProduct(productDtoForUpdate, true);
                     return RedirectToAction("Index");
                 }
                 List<SelectListItem> categoryValues = (from x in _manager.CategoryService.GetAllCategories(false)
@@ -127,7 +129,7 @@ namespace qrmenuproject.Areas.Admin.Controllers
                                                            Value = x.CategoryId.ToString(),
                                                        }).ToList();
                 ViewBag.Categorylist = categoryValues;
-                return View(product);
+                return View(productDtoForUpdate);
             }
             catch
             {

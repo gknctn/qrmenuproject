@@ -1,7 +1,6 @@
 ﻿@model Category
 @{
     ViewData["Title"] = "Kategori Sil";
-    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -9,6 +8,12 @@
             <form method="post" asp-action="CategoryDelete">
                 <div class="alert alert-danger text-center m-auto">
                     <p>Silmek istediğinize emin misiniz?</p>
+                    <h2>
+                        <i class="fa-duotone fa-solid fa-exclamation fa-beat fa-xl" style="--fa-primary-color: #FFD43B; --fa-secondary-color: #FFD43B;"></i>
+                    </h2>
+                    <small>
+                        Kategoriyi sildiginiz taktirde kategoride bulunan tüm ürünler silinecektir.
+                    </small>
                 </div>
                 <input type="hidden" name="ProductId" value="@Model.CategoryId" />
                 <div class="mb-3">

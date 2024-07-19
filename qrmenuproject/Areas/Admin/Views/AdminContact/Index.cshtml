@@ -1,7 +1,6 @@
 ﻿@model IQueryable<Contact>
 @{
     ViewData["Title"] = "Iletişim";
-    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
 
@@ -14,6 +13,7 @@
                     <th>Ad Soyad</th>
                     <th>Mail</th>
                     <th>Telefon Numarası</th>
+                    <th>Mesaj Gönderilme Tarihi</th>
                     <th>Mesaj</th>
                     <th>İşlemler</th>
                 </tr>
@@ -26,14 +26,15 @@
                         <td>@item.ContactName @item.ContactSurname</td>
                         <td>@item.ContactMail</td>
                         <td>@item.ContactPhoneNumber</td>
+                        <td>@item.ContactDateCreated</td>
                         <td>
                             @if (item.ContactMessage?.Length > 30)
                             {
-                                @item.ContactMessage.Substring(0, 30)
+                                <p>@item.ContactMessage.Substring(0, 30)...</p>
                             }
                             else
                             {
-                                @item.ContactMessage
+                                <p>@item.ContactMessage</p>
                             }
                         </td>
                         <td>

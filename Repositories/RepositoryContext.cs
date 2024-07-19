@@ -1,10 +1,12 @@
 ﻿using Entities.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace qrmenuproject.Models
 {
-    public class RepositoryContext : DbContext
+    public class RepositoryContext : IdentityDbContext<IdentityUser>
     {
         public RepositoryContext(DbContextOptions<RepositoryContext> options) : base(options)
         { }

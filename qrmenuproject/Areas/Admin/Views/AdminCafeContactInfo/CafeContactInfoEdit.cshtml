@@ -3,11 +3,11 @@
     ViewData["Title"] = "Kafe İletişim Düzenle";
 }
 
-<div class="container mt-5 mb-5">
+<div class="container mb-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form method="post" asp-action="CafeContactInfoEdit">
-                <div asp-validation-summary="All" class="alert alert-danger"></div>
+                <div asp-validation-summary="All" class="alert"></div>
                 <input type="hidden" name="CafeContactInfoId" value="@Model.CafeContactInfoId " />
                 <div class="mb-3">
                     <label for="CafeContactInfoMail" class="form-label">Mail</label>

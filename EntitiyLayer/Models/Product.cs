@@ -14,6 +14,8 @@ namespace Entities.Models
         public string? ProductDescription { get; set; }
         public decimal? ProductPrice { get; set; }
         public String? ProductImage { get; set; }
+        public DateTime ProductDateCreated { get; set; }
+        public bool ProductShowcase { get; set; }
         public int CategoryId { get; set; }
         public Category? Category { get; set; }
     }

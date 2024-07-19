@@ -16,13 +16,13 @@ namespace Repositories
         {
         }
 
-        public void AddCategory(Category category, bool trackChanges) => AddItem(category,trackChanges);
+        public void AddCategory(Category category, bool trackChanges) => AddItem(category, trackChanges);
 
-        public Category CategoryWithProducts(int id, bool trackChanges)=>GetAll(false).Include(p => p.Products).Where(x=>x.CategoryId==id).First();
+        public Category CategoryWithProducts(int id, bool trackChanges) => GetAll(trackChanges).Include(p => p.Products.Where(x => x.ProductShowcase == true)).Where(x => x.CategoryId == id).First();
 
         public void DeleteCategory(Category category, bool trackChanges) => DeleteItem(category, trackChanges);
 
-        public void EditCategory(Category category, bool trackChanges)=>EditItem(category, trackChanges);
+        public void EditCategory(Category category, bool trackChanges) => EditItem(category, trackChanges);
 
         public IQueryable<Category> GetAllCategories(bool trackChanges) => GetAll(trackChanges);
 

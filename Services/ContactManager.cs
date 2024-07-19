@@ -37,6 +37,12 @@ namespace Services
             return values;
         }
 
+        public IQueryable<Contact> GetLast3Contact(bool trackChanges)
+        {
+            IQueryable<Contact> values = _manager.Contact.GetLast3Contact(trackChanges);
+            return values;
+        }
+
         public Contact? GetOneContact(int id, bool trackChanges)
         {
             Contact? value = _manager.Contact.GetOneContact(id, trackChanges);

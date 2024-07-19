@@ -10,6 +10,7 @@ namespace Entities.Models
     public class About
     {
         public int AboutId { get; set; }
+
         [Required(ErrorMessage = "Hakkımızda açıklama alanı boş geçilemez.")]
         public string? AboutDescription { get; set; }
 
@@ -19,6 +20,7 @@ namespace Entities.Models
         [Required(ErrorMessage = "Hakkımızda misyon alanı boş geçilemez.")]
         public string? AboutMission { get; set; }
 
+        [RegularExpression(@"^(0(\d{10})|(\+90(\d{10})))$", ErrorMessage = "Geçersiz telefon numarası. Lütfen 0 ile başlayan ve 11 haneli bir telefon numarası giriniz.")]
         [Required(ErrorMessage = "Whatsapp numara alanı boş geçilemez.")]
         public string? AboutWpAddress { get; set; }
 

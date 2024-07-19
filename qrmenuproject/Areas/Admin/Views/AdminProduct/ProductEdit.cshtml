@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Ürün Düzenle";
 }
-<div class="container mt-5">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form method="post" asp-action="ProductEdit" enctype="multipart/form-data">
@@ -25,6 +25,10 @@
                     <label for="ProductImage" class="form-label">Ürün Resim</label>
                     <input type="file" name="file" class="form-control" />
                     <input type="hidden" asp-for="@Model.ProductImage" />
+                </div>
+                <div class="mb-3">
+                    <label for="ProductShowcase" class="form-label">Yayinlansin mi? </label>
+                    <input type="checkbox" asp-for="@Model.ProductShowcase"/>
                 </div>
                 <div class="mb-3">
                     <label for="stockStatus" class="form-label">Ürün Açıklama</label>

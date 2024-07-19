@@ -30,8 +30,15 @@ namespace qrmenuproject.Areas.Admin.Controllers
         {
             try
             {
-                _manager.AboutService.EditAbout(about, false);
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    _manager.AboutService.EditAbout(about, false);
+                    return RedirectToAction("Index");
+                }
+                else 
+                {
+                    return View("Index",about);
+                }
             }
             catch
             {

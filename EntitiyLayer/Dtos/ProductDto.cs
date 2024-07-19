@@ -23,7 +23,10 @@ namespace Entities.Dtos
         public decimal? ProductPrice { get; init; }
 
         public String? ProductImage { get; set; }
+        public DateTime ProductDateCreated { get; set; } = DateTime.Now;
 
+        [Required(ErrorMessage = "Yayinlansin mi?")]
+        public bool ProductShowcase { get; set; }
         [Required(ErrorMessage = "Kategori alanı boş geçilemez.")]
         public int CategoryId { get; init; }
     }

@@ -25,5 +25,6 @@ namespace Entities.Models
 
         [Required(ErrorMessage = "Mesaj alanı boş geçilemez.")]
         public string? ContactMessage { get; set; }
+        public DateTime ContactDateCreated { get; set; }= DateTime.Now;
     }
 }

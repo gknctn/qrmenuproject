@@ -1,43 +1,27 @@
-﻿<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3">
-    <div class="container-fluid">
-        <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index">Admin</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-            <ul class="navbar-nav flex-grow-1">
-                <li class="nav-item">
-                    <a class="nav-link text-light" asp-area="Admin" asp-controller="Adminproduct" asp-action="Index">
-                        Ürünler (@await Component.InvokeAsync("ProductSummary"))
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" asp-area="Admin" asp-controller="Admincategory" asp-action="Index">
-                        Kategoriler
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" asp-area="Admin" asp-controller="Admincontact" asp-action="Index">
-                        Iletişim
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" asp-area="Admin" asp-controller="AdminAbout" asp-action="Index">
-                        Hakkımızda
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" asp-area="Admin" asp-controller="AdminCafeContactInfo" asp-action="Index">
-                        Kafe iletisim bilgileri
-                    </a>
-                </li>
-            </ul>
-            <ul class="navbar-nav">
-                <a class="nav-link text-light" asp-area="" asp-controller="" asp-action="">
-                    WEB
-                </a>
-            </ul>
+﻿<nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+    <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+        <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
+    </a>
+    <a href="#" class="sidebar-toggler flex-shrink-0">
+        <i class="fa fa-bars"></i>
+    </a>
+    <form class="d-none d-md-flex ms-4">
+        <input class="form-control border-0" type="search" placeholder="Search">
+    </form>
+    <div class="navbar-nav align-items-center ms-auto">
+        @* message *@
+        @await Component.InvokeAsync("AdminNavbarMessage")
+        
+        <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                <img class="rounded-circle me-lg-2" src="~/img/karakedi-logo.jpg" alt="" style="width: 40px; height: 40px;">
+                <span class="d-none d-lg-inline-flex">Karakedi Kafe</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                <a href="#" class="dropdown-item">My Profile</a>
+                <a href="#" class="dropdown-item">Settings</a>
+                <a href="#" class="dropdown-item">Log Out</a>
+            </div>
         </div>
     </div>
 </nav>

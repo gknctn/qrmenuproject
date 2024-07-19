@@ -12,6 +12,6 @@ namespace Entities.Models
         public int CategoryId { get; set; }
         [Required(ErrorMessage = "Kategori adı alanı boş geçilemez.")]
         public string? CategoryName { get; set; }
-        public List<Product> Products { get; set; }
+        public List<Product>? Products { get; set; }
     }
 }

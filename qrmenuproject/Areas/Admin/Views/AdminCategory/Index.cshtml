@@ -3,10 +3,10 @@
     ViewData["Title"] = "Kategori Listeleme";
 }
 
-<div class="container-fluid mt-5">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-2 text-center">
-            <a class="btn btn-success" asp-area="Admin" asp-controller="AdminCategory" asp-action="CategoryCreate">
+            <a class="btn btn-success mb-3" style="width:150px" asp-area="Admin" asp-controller="AdminCategory" asp-action="CategoryCreate">
                 Kategori Ekle
             </a>
         </div>
@@ -14,10 +14,10 @@
 </div>
 <div class="row justify-content-center mb-5">
     <div class="col-md-12">
-        <table class="table table-striped text-center mb-5">
+        <table class="table table-striped rounded-5 text-center mb-5">
             <thead>
                 <tr>
-                    <th>Ürün Adı</th>
+                    <th>Kategori Adı</th>
                     <th>İşlemler</th>
                 </tr>
             </thead>

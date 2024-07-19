@@ -1,0 +1,35 @@
+﻿
+    <section class="swiper-pop mt-5 mb-5">
+        <div class="container">
+            <h1>Menünün Yenileri</h1>
+        </div>
+        <div class="slide-container swiper">
+            <div class="slide-content">
+                <div class="card-wrapper swiper-wrapper">
+
+                    @foreach (var item in Model)
+                    {
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+
+                                <div class="card-image">
+                                    <img src="@item.ProductImage" alt="" class="card-img">
+                                </div>
+                            </div>
+
+                            <div class="card-content">
+                                <h2 class="name">@item.ProductName</h2>
+                                <p class="description">@item.ProductDescription</p>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+            <div class="swiper-button-next swiper-navBtn"></div>
+            <div class="swiper-button-prev swiper-navBtn"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>

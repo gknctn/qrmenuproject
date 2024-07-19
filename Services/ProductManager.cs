@@ -76,5 +76,10 @@ namespace Services
             }
             return _mapper.Map<ProductDtoForUpdate>(value);
         }
+
+        public IQueryable<Product> GetShowcaseProducts(bool trackChanges)
+        {
+            return _manager.Product.GetShowcaseProducts(trackChanges);
+        }
     }
 }

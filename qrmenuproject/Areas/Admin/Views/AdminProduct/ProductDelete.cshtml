@@ -1,7 +1,6 @@
 ﻿@model Product
 @{
     ViewData["Title"] = "Ürün Silme";
-    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -9,6 +8,9 @@
             <form method="post" asp-action="ProductDelete">
                 <div class="alert alert-danger text-center m-auto">
                     <p>Silmek istediğinize emin misiniz?</p>
+                    <h2>
+                        <i class="fa-duotone fa-solid fa-exclamation fa-beat fa-xl" style="--fa-primary-color: #FFD43B; --fa-secondary-color: #FFD43B;"></i>
+                    </h2>
                 </div>
                 <input type="hidden" name="ProductId" value="@Model.ProductId" />
                 <div class="mb-3">

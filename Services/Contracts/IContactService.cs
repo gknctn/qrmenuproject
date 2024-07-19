@@ -10,6 +10,7 @@ namespace Services.Contracts
     public interface IContactService
     {
         IQueryable<Contact> GetAllContact(bool trackChanges);
+        IQueryable<Contact> GetLast3Contact(bool trackChanges);
         void AddContact(Contact contact, bool trackChanges);
         Contact? GetOneContact(int id, bool trackChanges);
         void DeleteContact(Contact contact, bool trackChanges);

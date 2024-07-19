@@ -21,6 +21,8 @@ namespace Repositories
 
         public IQueryable<Contact> GetAllContact(bool trackChanges) => GetAll(trackChanges);
 
+        public IQueryable<Contact> GetLast3Contact(bool trackChanges) => GetAll(trackChanges).OrderByDescending(c => c.ContactId).Take(3);
+
         public Contact? GetOneContact(int id, bool trackChanges) => GetByCondition(x => x.ContactId == id, trackChanges);
     }
 }

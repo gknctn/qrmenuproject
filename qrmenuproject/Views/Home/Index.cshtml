@@ -3,35 +3,37 @@
     ViewData["Title"] = "Anasayfa";
 }
 
-<h1 class="text-center mt-3 mb-3">MENÜ</h1>
-
+@await Component.InvokeAsync("NewestProduct")
 
 @section Body {
-    <div class="menu">
+    <div class="menu" id="CategoryMenu">
         <ul>
             <li>
-                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="index" asp-route-id="0">Tümü</a>
+                <a class="nav-link text-dark" asp-controller="Home" asp-action="Index" asp-route-id="0" asp-fragment="CategoryMenu">Tümü</a>
             </li>
             @foreach (Category category in Model.Categories)
             {
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="index" asp-route-id="@category.CategoryId">
+                    <a class="nav-link text-dark" asp-controller="Home" asp-action="Index" asp-route-id="@category.CategoryId" asp-fragment="CategoryMenu">
                         @category.CategoryName
                     </a>
                 </li>
             }
         </ul>
     </div>
-}
-<div id="div1" class="my-div">
-    <div class="container">
-        <div class="menu-grid">
-            @foreach (Product prd in Model.Products)
-            {
-                <partial name="_ProductCard" model="@prd" />
-            }
+
+    <div id="div1" class="my-div">
+        <div class="container">
+            <div class="menu-grid">
+                @if (Model.Products.Count() == 0)
+                {
+                    <h3>Kayıtlı ürün bulunmamaktadır.</h3>
+                }
+                @foreach (Product prd in Model.Products)
+                {
+                    <partial name="_ProductCard" model="@prd" />
+                }
+            </div>
         </div>
     </div>
-</div>
-
-
+}

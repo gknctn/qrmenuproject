@@ -23,12 +23,14 @@ namespace Repositories
 
         public IQueryable<Product> GetAllProducts(bool trackChanges) => GetAll(trackChanges);
 
-        public IQueryable<Product> GetAllProductsWithCategory(bool trackChanges)=> GetAll(trackChanges).Include(x => x.Category);
+        public IQueryable<Product> GetAllProductsWithCategory(bool trackChanges) => GetAll(trackChanges).Include(x => x.Category);
 
-        public IQueryable<Product> GetLastThreeProduct(bool trackChanges)=>GetAll(trackChanges).OrderByDescending(x => x.ProductId).Take(3);
+        public IQueryable<Product> GetLastThreeProduct(bool trackChanges) => GetAll(trackChanges).OrderByDescending(x => x.ProductId).Take(3);
 
         public Product? GetOneProduct(int id, bool trackChanges) => GetByCondition(
             p => p.ProductId == id,
             trackChanges);
+
+        public IQueryable<Product> GetShowcaseProducts(bool trackChanges) => GetAll(trackChanges).Where(x => x.ProductShowcase == true);
     }
 }

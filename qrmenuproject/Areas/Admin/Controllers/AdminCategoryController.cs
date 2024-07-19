@@ -35,8 +35,15 @@ namespace qrmenuproject.Areas.Admin.Controllers
         {
             try
             {
-                _manager.CategoryService.AddCategory(category, false);
-                return RedirectToAction("Index");
+                if (ModelState.IsValid is true)
+                {
+                    _manager.CategoryService.AddCategory(category, false);
+                    return RedirectToAction("Index");
+                }
+                else 
+                {
+                    return View();
+                }
             }
             catch
             {
@@ -58,8 +65,15 @@ namespace qrmenuproject.Areas.Admin.Controllers
         {
             try
             {
-                _manager.CategoryService.EditCategory(category, false);
-                return RedirectToAction("Index");
+                if (ModelState.IsValid is true)
+                {
+                    _manager.CategoryService.EditCategory(category, false);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View();
+                }
             }
             catch
             {

@@ -3,11 +3,30 @@
     ViewData["Title"] = "Kafe İletişim Detay";
 }
 <div class="container text-center">
-    <div>
-        <p>@Model.CafeContactInfoAddress </p>
-        <p>@Model.CafeContactInfoMail</p>
-    </div>
-    <div class="btn-group">
-        <a class="btn btn-warning" asp-action="CafeContactInfoEdit">Düzenle</a>
+    <div class="card" style="height:500px">
+        <div class="card-header">
+            @ViewData["Title"]
+        </div>
+        <div class="card-body">
+            <div class="h-50 p-5">
+                <div class="row">
+                    <div class="col-6 text-end">
+                        Mail adresi :
+                    </div>
+                    <div class="col-6 text-start">
+                        <h5 class="card-title">@Model.CafeContactInfoMail</h5>
+                    </div>
+
+                    <div class="col-6 text-end">
+                        Adres :
+                    </div>
+                    <div class="col-6 text-start">
+                        <h5 class="card-title">@Model.CafeContactInfoAddress</h5>
+                    </div>
+                </div>
+                
+                <a class="btn bg-warning mt-5" style="width:150px" asp-action="CafeContactInfoEdit">Düzenle</a>
+            </div>
+        </div>
     </div>
 </div>

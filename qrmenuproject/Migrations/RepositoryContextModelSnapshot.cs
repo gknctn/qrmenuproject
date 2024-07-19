@@ -109,7 +109,37 @@ namespace qrmenuproject.Migrations
                         new
                         {
                             CategoryId = 1,
-                            CategoryName = "Soğuk içecekler"
+                            CategoryName = "Soğuk Kahveler"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            CategoryName = "Sıcak Kahveler"
+                        },
+                        new
+                        {
+                            CategoryId = 3,
+                            CategoryName = "Soğuk Içecekler"
+                        },
+                        new
+                        {
+                            CategoryId = 4,
+                            CategoryName = "Sıcak Içecekler"
+                        },
+                        new
+                        {
+                            CategoryId = 5,
+                            CategoryName = "Kutu Icecekler"
+                        },
+                        new
+                        {
+                            CategoryId = 6,
+                            CategoryName = "Pastalar"
+                        },
+                        new
+                        {
+                            CategoryId = 7,
+                            CategoryName = "Tatlılar"
                         });
                 });
 
@@ -118,6 +148,9 @@ namespace qrmenuproject.Migrations
                     b.Property<int?>("ContactId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("ContactDateCreated")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ContactMail")
                         .IsRequired()
@@ -153,20 +186,23 @@ namespace qrmenuproject.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime>("ProductDateCreated")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("ProductDescription")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ProductImage")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ProductName")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<decimal?>("ProductPrice")
-                        .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("ProductShowcase")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("ProductId");
 
@@ -179,47 +215,271 @@ namespace qrmenuproject.Migrations
                         {
                             ProductId = 1,
                             CategoryId = 1,
-                            ProductDescription = "Soguk latte",
-                            ProductImage = "~/img/bardak_cay.jpg",
+                            ProductDateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductDescription = "Soguk latte kahvesi.",
+                            ProductImage = "/MenuProductImageFiles/IceCoffe1.jpg",
                             ProductName = "Ice Latte",
-                            ProductPrice = 85m
+                            ProductPrice = 85m,
+                            ProductShowcase = true
                         },
                         new
                         {
                             ProductId = 2,
                             CategoryId = 1,
-                            ProductDescription = "Soguk americano",
-                            ProductImage = "~/img/bardak_cay.jpg",
+                            ProductDateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductDescription = "Soguk americano kahvesi.",
+                            ProductImage = "/MenuProductImageFiles/IceCoffe1.jpg",
                             ProductName = "Ice Americano",
-                            ProductPrice = 70m
+                            ProductPrice = 70m,
+                            ProductShowcase = true
                         },
                         new
                         {
                             ProductId = 3,
-                            CategoryId = 1,
-                            ProductDescription = "Soguk Nane ve limon aromali icecek",
-                            ProductImage = "~/img/bardak_cay.jpg",
+                            CategoryId = 3,
+                            ProductDateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductDescription = "Soguk Nane ve lime aromali icecek.",
+                            ProductImage = "/MenuProductImageFiles/IceCoffe1.jpg",
                             ProductName = "Cool Lime",
-                            ProductPrice = 100m
+                            ProductPrice = 100m,
+                            ProductShowcase = true
                         },
                         new
                         {
                             ProductId = 4,
                             CategoryId = 1,
-                            ProductDescription = "Soguk mocha",
-                            ProductImage = "~/img/bardak_cay.jpg",
+                            ProductDateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductDescription = "Soguk mocha kahvesi.",
+                            ProductImage = "/MenuProductImageFiles/IceCoffe1.jpg",
                             ProductName = "Ice Mocha",
-                            ProductPrice = 85m
+                            ProductPrice = 85m,
+                            ProductShowcase = true
                         },
                         new
                         {
                             ProductId = 5,
-                            CategoryId = 1,
-                            ProductDescription = "Soguk bogurtlenli ve limonlu icecek",
-                            ProductImage = "~/img/bardak_cay.jpg",
+                            CategoryId = 3,
+                            ProductDateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductDescription = "Soguk bogurtlenli ve limonlu icecek.",
+                            ProductImage = "/MenuProductImageFiles/IceCoffe1.jpg",
                             ProductName = "Berry Lime",
-                            ProductPrice = 100m
+                            ProductPrice = 100m,
+                            ProductShowcase = true
+                        },
+                        new
+                        {
+                            ProductId = 6,
+                            CategoryId = 6,
+                            ProductDateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductDescription = "Çikolatalı yumusak kek.",
+                            ProductImage = "/MenuProductImageFiles/IceCoffe1.jpg",
+                            ProductName = "Brownie",
+                            ProductPrice = 70m,
+                            ProductShowcase = true
+                        },
+                        new
+                        {
+                            ProductId = 7,
+                            CategoryId = 6,
+                            ProductDateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductDescription = "Bal kabağı aromalı latte kahvesi.",
+                            ProductImage = "/MenuProductImageFiles/IceCoffe1.jpg",
+                            ProductName = "Pumpkin Spice Latte",
+                            ProductPrice = 70m,
+                            ProductShowcase = true
                         });
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex");
+
+                    b.ToTable("AspNetRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
                 });
 
             modelBuilder.Entity("Entities.Models.Product", b =>
@@ -231,6 +491,57 @@ namespace qrmenuproject.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Entities.Models.Category", b =>

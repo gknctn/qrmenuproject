@@ -1,5 +1,4 @@
 ﻿@model CafeContactInfo
-
 <div class="col-md-4">
     <div class="d-inline-block">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-geo-alt contact-icon" viewBox="0 0 16 16">
@@ -8,7 +7,7 @@
         </svg>
     </div>
     <div class="d-inline-block p-3">
-        <h4>Adres</h4>
+        <h4 class="contact-h">Adres</h4>
         <p>@Model.CafeContactInfoAddress</p>
     </div>
     <div>
@@ -18,8 +17,9 @@
             </svg>
         </div>
         <div class="d-inline-block p-3">
-            <h4>Mail</h4>
+            <h4 class="contact-h">Mail</h4>
             <a href="mailto:@Model.CafeContactInfoMail" class="contact-mail">@Model.CafeContactInfoMail</a>
         </div>
+
     </div>
 </div>

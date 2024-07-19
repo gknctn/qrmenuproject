@@ -1,8 +1,4 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
-function showDiv(divId) {
+﻿function showDiv(divId) {
     // Tüm divleri gizle
     var divs = document.querySelectorAll('.my-div');
     divs.forEach(function (div) {
@@ -60,4 +56,22 @@ var swiper = new Swiper(".slide-content", {
             slidesPerView: 4,
         },
     },
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const cards = document.querySelectorAll('.gallery .card');
+
+    // İlk kartı normal hale getir
+    if (cards.length > 0) {
+        cards[0].classList.add('active');
+    }
+
+    cards.forEach(card => {
+        card.addEventListener('click', function () {
+            // Tüm kartların bulanık olmasını sağla
+            cards.forEach(c => c.classList.remove('active'));
+            // Tıklanan karta 'active' sınıfı ekle
+            this.classList.add('active');
+        });
+    });
 });

@@ -29,7 +29,7 @@ namespace qrmenuproject.Controllers
 
             if (id == 0)
             {
-                IEnumerable<Product> productList = _manager.ProductService.GetAllProducts(false);
+                IEnumerable<Product> productList = _manager.ProductService.GetShowcaseProducts(false);
                 values.Products = productList.OrderBy(x => x.ProductName);
             }
             else
@@ -41,7 +41,7 @@ namespace qrmenuproject.Controllers
             values.Categories = categorylist.ToList();
             return View(values);
         }
-        
+
         public IActionResult Details([FromRoute] int id)
         {
             Product? product = _manager.ProductService.GetOneProduct(id, false);

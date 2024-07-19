@@ -24,6 +24,10 @@ namespace qrmenuproject.Areas.Admin.Controllers
             var values = _manager.ProductService.GetAllProductsWithCategory(false);
             return View(values);
         }
+        public ActionResult Deneme()
+        {
+            return View();
+        }
 
         // GET: AdminProductController/Details/5
         public ActionResult ProductDetail([FromRoute] int id)
@@ -50,9 +54,9 @@ namespace qrmenuproject.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ProductCreateAsync([FromForm] ProductDtoForInsertion productDto, IFormFile? file)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                if (file is not null)
                 {
                     string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "MenuProductImageFiles", file.FileName);
                     using (var stream = new FileStream(path, FileMode.Create))
@@ -64,23 +68,20 @@ namespace qrmenuproject.Areas.Admin.Controllers
                 else
                 {
                     productDto.ProductImage = "/MenuProductImageFiles/defaultProductPicture.jpg";
-
                 }
+                _manager.ProductService.AddProduct(productDto, true);
 
+                return RedirectToAction("Index");
+            }
+            else
+            {
                 List<SelectListItem> categoryValues = (from x in _manager.CategoryService.GetAllCategories(false)
                                                        select new SelectListItem
                                                        {
                                                            Text = x.CategoryName,
                                                            Value = x.CategoryId.ToString(),
                                                        }).ToList();
-
                 ViewBag.Categorylist = categoryValues;
-                _manager.ProductService.AddProduct(productDto, true);
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
                 return View();
             }
         }
@@ -129,11 +130,12 @@ namespace qrmenuproject.Areas.Admin.Controllers
                                                            Value = x.CategoryId.ToString(),
                                                        }).ToList();
                 ViewBag.Categorylist = categoryValues;
+                
                 return View(productDtoForUpdate);
             }
             catch
             {
-                return View();
+                return View(productDtoForUpdate);
             }
         }
 

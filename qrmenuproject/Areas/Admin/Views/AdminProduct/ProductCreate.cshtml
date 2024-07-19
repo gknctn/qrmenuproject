@@ -3,11 +3,11 @@
     ViewData["Title"] = "Ürün Ekle";
 }
 
-<div class="container mt-5">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form method="post" asp-action="ProductCreate" enctype="multipart/form-data">
-                <div asp-validation-summary="All" class="alert alert-danger"></div>
+                <div asp-validation-summary="All" class="alert"></div>
                 <div class="mb-3">
                     <label for="productName" class="form-label">Ürün Adı</label>
                     <input type="text" class="form-control" asp-for="@Model.ProductName">
@@ -26,6 +26,10 @@
                     <input type="file" name="file" class="form-control" />
                 </div>
                 <div class="mb-3">
+                    <label for="ProductShowcase" class="form-label">Yayinlansin mi? </label>
+                    <input type="checkbox" asp-for="@Model.ProductShowcase" checked />
+                </div>
+                <div class="mb-3">
                     <label for="ProductDescription" class="form-label">Ürün Açıklama</label>
                     <textarea type="text" rows="6" class="form-control" asp-for="@Model.ProductDescription"></textarea>
                 </div>
@@ -34,7 +38,7 @@
                         <i class="fas fa-plus"></i>
                         Ekle
                     </button>
-                    <a type="button" asp-action="Index" class="btn btn-outline-secondary">
+                    <a asp-action="Index" type="button" class="btn btn-outline-secondary">
                         <i class="fas fa-arrow-left"></i>
                         Geri
                     </a>
